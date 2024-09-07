@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+pwd
+
+total=`wc -l targets.txt | cut -d ' ' -f 1` || exit
+done=`cd results/ && ls -1 | wc -l | cut -d ' ' -f 1` || done=0
+
+bc -l <<!
+scale = 5;
+percent = 100 / $total * $done;
+print percent, "% ($done of $total)\n";
+!
+
+du -hs results
+

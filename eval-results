@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+rm -f found-open-relays.txt found-http-proxys.txt found-socks-proxys.txt
+
+for result in results/*.xml; do
+	./get-open-relays "$result" >>found-open-relays.txt
+	./get-http-proxys "$result" >>found-http-proxys.txt
+	./get-socks-proxys "$result" >>found-socks-proxys.txt
+done # 2>/dev/null
+
+wc -l found-open-relays.txt found-http-proxys.txt found-socks-proxys.txt
+

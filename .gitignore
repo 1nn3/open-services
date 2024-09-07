@@ -1,0 +1,10 @@
+*~
+*.bak
+*.ERR
+*.swp
+*.tdy
+env.pl
+results
+found-http-proxys.txt
+found-open-relays.txt
+found-socks-proxys.txt
