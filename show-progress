@@ -12,4 +12,5 @@ print percent, "% ($done of $total)\n";
 !
 
 du -hs results
+df -h results
 

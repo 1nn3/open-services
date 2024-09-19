@@ -18,6 +18,6 @@ for targets; do
 		continue
 	fi
 
-	nmap --min-hostgroup 96 -T4 -v -Pn --script ./scripts/ -p 8123,3128,8000,8080,25,465,587,1080,9050 --open -oX "$results" $targets
+	nmap --min-hostgroup 96 -T4 -v -Pn --script ./scripts/ -p 21,990,8123,3128,8000,8080,25,465,587,1080,9050 --open -oX "$results" $targets
 done
 
