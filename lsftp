@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+set -x
+set -e
+
+HOST="$1"
+PORT="$2"
+USER="anonymous"
+PASS="anonymous"
+
+ftp -n $HOST <<! # | grep -E "inc(|oming)|pub(|lic)"
+quote USER $USER
+quote PASS $PASS
+ls -lR
+quit
+!
+
