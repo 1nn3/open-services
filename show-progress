@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+export LANG=C
+export BLOCK_SIZE=human-readable
+
+pwd
+
+total=`wc -l targets.txt | cut -d ' ' -f 1` || exit
+done=`cd results/ && ls -1 | wc -l | cut -d ' ' -f 1` || done=0
+
+bc -l <<!
+scale = 3;
+percent = 100 / $total * $done;
+print percent, "% ($done of $total)\n";
+!
+
+du -s results
+df results
+
+free -h | awk '
+$1=="Mem:" {print $1 " " $7"/"$2 " free"}
+$1=="Swap:" {print $1 " " $4"/"$2 " free"}
+'
+
+uptime
+
