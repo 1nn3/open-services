@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+# scan for open services
+
+set -x
+set -e
+
+export LC_ALL="C"
+export PATH=".:$PATH"
+export NMAPDIR="."
+
+unset NMAP_PRIVILEGED
+
+mkdir -p "./results" || exit
+
+for targets; do
+	results="./results/$(echo $targets | basenc --base64url).xml"
+
+	if [ -e "$results" ]; then
+		continue
+	fi
+
+	nmap --min-hostgroup 96 -T4 -v -sT -Pn --script ./scripts/ -p 21,80,990,8123,3128,8000,8080,25,465,587,1080,9050 --open -oX "$results" $targets
+done
+
