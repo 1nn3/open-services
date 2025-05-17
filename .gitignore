@@ -1,0 +1,9 @@
+*~
+*.bak
+*.ERR
+*.swp
+*.tdy
+env.pl
+results
+found-*.txt
+topsites.txt
