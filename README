@@ -1,4 +1,5 @@
 open-services - Find open services
+Topics: proxy-list portscan topsites mail-relay
 
 # start a tmux session and scan;
 # this creates the ./results directory
