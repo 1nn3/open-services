@@ -1,0 +1,8 @@
+*~
+*.bak
+*.swp
+*.ERR
+*.tdy
+results
+found-*.txt
+topsites.txt
