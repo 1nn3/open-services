@@ -1,0 +1,12 @@
+#!/usr/bin/env -S chronic flock -n ${HOME}/open-services/cronjob sh
+# @reboot ~/open-services/cronjob
+
+set -x
+set -e
+
+cd ~/open-services || exit
+
+./start-loop.sh
+
+exit 0
+
