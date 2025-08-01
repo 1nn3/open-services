@@ -7,3 +7,4 @@ results
 found-*.txt
 topsites.txt
 loop-pid.txt
+targets.d/*.txt

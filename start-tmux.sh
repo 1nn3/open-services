@@ -14,7 +14,7 @@ Session $session already exists. Attaching."
 fi
 $tmux new-session -d -s $session
 $tmux new-window -t $session:0 
-$tmux send-keys -t $session:0 'shuf ./targets.txt | nice xargs -I{} -P8 ./scan {}' C-m
+$tmux send-keys -t $session:0 'cat targets.txt targets.d/*.txt | shuf | nice xargs -I{} -P8 ./scan {}' C-m
 $tmux split-window  -h -t $session:0
 $tmux send-keys -t $session:0 'watch ./show-progress' C-m
 $tmux split-window  -v -t $session:0

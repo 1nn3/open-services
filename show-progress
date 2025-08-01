@@ -2,8 +2,9 @@
 export LANG="C"
 export BLOCK_SIZE="human-readable"
 pwd
-total=`wc -l targets.txt | cut -d ' ' -f 1` || exit
-done=`cd results/ && ls -1 | wc -l | cut -d ' ' -f 1` || done=0
+realpath targets.txt
+total=`cat targets.txt targets.d/*.txt | wc -l | cut -d ' ' -f 1` || exit
+done=`ls -1 results/ | wc -l | cut -d ' ' -f 1` || done=0
 bc -l <<!
 scale = 3;
 percent = 100 / $total * $done;
