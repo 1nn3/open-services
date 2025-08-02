@@ -7,5 +7,5 @@ Topics: proxy-list portscan topsites mail-relay
 
 # evaluating the ./results directory;
 # this creates the found-*.txt files
-./eval-results
+./eval-results.sh
 
