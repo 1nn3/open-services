@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+export PATH=".:$PATH"
 session="open-services"
 args="-f tmux.conf"
 tmux="$(command -v tmux) $args" \

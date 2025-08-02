@@ -1,12 +1,9 @@
 #!/usr/bin/env -S chronic flock -n ${HOME}/open-services/cronjob sh
 # @reboot ~/open-services/cronjob
-
 set -x
 set -e
-
+export PATH=".:$PATH"
 cd ~/open-services || exit
-
-./start-loop.sh
-
+start-loop.sh
 exit 0
 
