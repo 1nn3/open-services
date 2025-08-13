@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+pkill --pidfile loop-pid.txt && rm loop-pid.txt
+

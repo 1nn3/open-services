@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+echo $$ >loop-pid.txt
+while cat targets.txt targets.d/*.txt | shuf | nice xargs -I{} -P8 scan {}; do
+	eval-results.sh && rm-random-results
+done
+
