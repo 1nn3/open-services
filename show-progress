@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+export PATH=".:/usr/local/bin:/usr/bin:/bin"
+export BLOCK_SIZE="human-readable"
+pwd
+realpath targets.txt
+total=`cat targets.txt targets.d/*.txt | wc -l | cut -d ' ' -f 1` || exit
+done=`ls -1 results/ | wc -l | cut -d ' ' -f 1` || done=0
+bc -l <<!
+scale = 3;
+percent = 100 / $total * $done;
+print percent, "% ($done of $total)\n";
+!
+du -s results/
+df results/
+free -h | awk '
+$1=="Mem:" {print $1 " " $7"/"$2 " free"}
+$1=="Swap:" {print $1 " " $4"/"$2 " free"}
+'
+uptime
