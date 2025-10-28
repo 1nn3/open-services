@@ -1,0 +1,13 @@
+open-services 🌐🖥️ – Find open services
+Topics: proxy-list portscan topsites mail-relay
+
+Start a tmux session and scan;
+this creates the ./results directory
+
+./start-tmux # or use proxychains ./start-tmux
+
+Evaluating the ./results directory;
+this creates the ./found-*.txt files
+
+./eval-results
+
