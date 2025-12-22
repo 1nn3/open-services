@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import sys
 import libxml2
-for i in range(1, len(sys.argv)):
+for arg in sys.argv[1:]:
 	try:
-		doc = libxml2.parseFile(sys.argv[i])	
+		doc = libxml2.parseFile(arg)
 		for node in doc.xpathEval('//script[@id="ipidseq"][contains(@output, "_ipidseq: Incremental!")]'):
 			address = node.xpathEval('../../../address/@addr')[0].content
 			port = node.xpathEval('../@portid')[0].content
