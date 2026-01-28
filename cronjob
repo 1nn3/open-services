@@ -1,0 +1,6 @@
+#!/usr/bin/env -S chronic flock -n ${HOME}/open-services/cronjob nice sh
+# @reboot ~/open-services/cronjob
+set -xe
+export PATH=".:/usr/local/bin:/usr/bin:/bin"
+cd ~/open-services || exit
+start-loop

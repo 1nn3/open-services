@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -x #e
+export PATH=".:/usr/local/bin:/usr/bin:/bin"
+rm -f found-*.txt
+#parallel eval-results-helper ::: results/*.xml
+find results | xargs -P 8 -I {} eval-results-helper {}
+wc -l found-*.txt
+date

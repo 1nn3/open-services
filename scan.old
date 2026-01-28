@@ -1,0 +1,17 @@
+#!/usr/bin/sh
+# scan for open services
+set -xe
+export NMAPDIR="."
+mkdir -p "results" || exit
+if [ ! -e targets.txt ]; then
+	ln -s examples/internet.txt targets.txt
+fi
+for targets; do
+	results="results/`echo $targets | basenc --base64url`.xml"
+	#trap "rm -f -- $results" 0 1 2 3 15
+	if [ -e "$results" ]; then
+		nmap --resume "$results"
+	else
+		nmap --min-hostgroup 96 -T4 -v -sT -Pn --script scripts/ -p 21,80,990,8123,3128,8000,8080,25,465,587,1080,9050 --open -oX "$results" --scan-delay 1s $targets
+	fi
+done

@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -x
+for result; do
+	get-open-relays "$result" >>found-open-relays.txt
+	get-http-proxys "$result" >>found-http-proxys.txt
+	get-socks-proxys "$result" >>found-socks-proxys.txt
+	get-ftp-anons "$result" >>found-ftp-anons.txt
+	get-zombies "$result" >>found-zombies.txt
+done
