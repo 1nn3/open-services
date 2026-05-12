@@ -1,0 +1,8 @@
+#!/usr/bin/env -S proxychains nice sh
+set -ex
+export PATH=".:/usr/local/bin:/usr/bin:/bin"
+export BLOCK_SIZE="human-readable"
+mkdir -p topsites
+cut -f 1 found-ftp-anons.txt \
+	| xargs -P8 -I{} sh -c 'lsftp {} >topsites/{}'
+du topsites

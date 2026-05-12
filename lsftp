@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+for i; do
+	ftp -n $i <<! # | grep -E "inc(|oming)|pub(|lic)"
+quote USER anonymous
+quote PASS anonymous
+ls -lR
+quit
+!
+done
+

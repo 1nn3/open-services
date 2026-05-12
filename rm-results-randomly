@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+set -ex
+# remove 25% of the results randomly
+# Fisher-Yates shuffle
+find results -iname \*.nmap.txt -type f -print | awk '
+{
+	files[NR]=$0
+}
+END {
+	srand()
+	count = int(NR * 0.25)
+	for (i = 1; i <= NR; i++)
+		order[i] = i
+	for (i = NR; i >= 1; i--) {
+		j = int(rand() * i) + 1
+		tmp = order[i]
+		order[i] = order[j]
+		order[j] = tmp
+	}
+	for (i = 1; i <= count; i++)
+		print files[order[i]]
+}
+' | xargs --no-run-if-empty rm
+
